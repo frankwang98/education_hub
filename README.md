@@ -76,6 +76,10 @@ Education Hub
 
 详细模板见 [知识条目模板](docs/templates/knowledge-note.md)。
 
+内容状态、来源和复核方式见[内容维护与可信度](docs/maintenance.md)。
+
+仓库下一步优先级见[建设路线](docs/project-roadmap.md)。
+
 ## 使用与贡献
 
 - 当前仓库先搭建知识地图与学习路径，再逐步填充真正长期有效的内容。

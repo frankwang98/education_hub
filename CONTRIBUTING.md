@@ -13,8 +13,8 @@
 ```markdown
 # 主题名称
 
-> 学段：小学 / 初中 / 高中 / 通识
-> 状态：当前有效 / 待复核
+> 学段 / 适用范围：小学 / 初中 / 高中 / 通识
+> 状态：Foundational / Current Valid / Needs Review / Historical Context
 > 最后复核：YYYY-MM-DD
 
 ## 为什么要学
@@ -29,3 +29,5 @@
 ## 维护方式
 
 先完善各学科的知识地图和最短学习路径；单个主题在有可靠内容时再建立页面。避免为了“目录齐全”创建大量空文章。
+
+状态定义和复核节奏见[内容维护与可信度](docs/maintenance.md)。

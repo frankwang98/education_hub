@@ -1,7 +1,7 @@
 # 知识条目模板
 
-> 学段：小学 / 初中 / 高中 / 通识
-> 状态：当前有效 / 待复核
+> 学段 / 适用范围：小学 / 初中 / 高中 / 通识
+> 状态：Foundational / Current Valid / Needs Review / Historical Context
 > 最后复核：YYYY-MM-DD
 
 ## 为什么要学
@@ -38,3 +38,5 @@
 ## 来源与延伸阅读
 
 - 官方课程标准、经典教材、公开课或可信参考资料。
+
+状态与复核节奏见[内容维护与可信度](../maintenance.md)。

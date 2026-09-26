@@ -2,6 +2,12 @@
 
 这里先建立学习路径，再逐步填入高价值内容。
 
+## 从哪里开始
+
+- 想补基础：从 [成年人基础重建路线](learning/adult-foundations.md) 进入。
+- 想系统学一个学科：先读对应入口，再沿学习路径推进。
+- 想把一个知识点真正记住：配合 [学习、练习与复习](learning/practice-and-review.md) 完成闭环。
+
 ## 第一阶段：基础重建
 
 适合需要重新打基础的成年人：
@@ -21,5 +27,13 @@
 文学与哲学 → 理解语言、思想和价值
 经济、法律、社会 → 理解公共生活和制度
 ```
+
+## 知识域
+
+- Language：Chinese / English
+- Mathematics：概念、定理、方法、例题与数学思想
+- [Science 科学](science/README.md)：Physics / Chemistry / Biology
+- [Humanities 人文](humanities/README.md)：History / Geography / Literature / Philosophy
+- [General Knowledge 通识](general/README.md)：Economics / Law / Society / Art / Life
 
 每个学科首页会逐步给出“从哪里开始、学到哪里、如何练习”的路线。
