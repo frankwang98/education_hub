@@ -14,7 +14,9 @@
       name: 'Education Hub',
       repo: 'https://github.com/frankwang98/education_hub',
       loadSidebar: true,
-      relativePath: true,
+      // Sidebar links use paths rooted at this Hub. Keeping this false prevents
+      // Docsify from re-resolving `docs/...` relative to a nested page.
+      relativePath: false,
       subMaxLevel: 3,
       maxLevel: 4,
       auto2top: true,
