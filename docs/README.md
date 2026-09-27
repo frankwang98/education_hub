@@ -8,6 +8,15 @@
 - 想系统学一个学科：先读对应入口，再沿学习路径推进。
 - 想把一个知识点真正记住：配合 [学习、练习与复习](learning/practice-and-review.md) 完成闭环。
 
+## 互动练习场
+
+知识条目负责讲清楚，练习场负责把它变成可回忆、可表达的能力。
+
+| 模块 | 现在可以做什么 | 入口 |
+| --- | --- | --- |
+| English Practice | 词汇、核心语法、造句、朗读与录音 | [进入英语互动练习](language/english/practice-lab.md) |
+| Chinese Practice | 古诗词关键句默写与理解提示 | [进入语文互动练习](language/chinese/practice-lab.md) |
+
 ## 第一阶段：基础重建
 
 适合需要重新打基础的成年人：

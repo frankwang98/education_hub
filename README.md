@@ -74,6 +74,15 @@ Education Hub
 关联知识与下一步
 ```
 
+## Practice Labs · 互动练习场
+
+知识内容和练习界面分开维护：Markdown 负责解释与学习路径，结构化题库负责题目与答案，HTML / JavaScript 负责交互和本地进度。
+
+| 模块 | 当前能力 | 入口 |
+| --- | --- | --- |
+| English Practice | 核心词汇、语法与造句输出 | [英语互动练习](docs/language/english/practice-lab.md) |
+| Chinese Practice | 古诗词复习与关键句默写 | [语文互动练习](docs/language/chinese/practice-lab.md) |
+
 详细模板见 [知识条目模板](docs/templates/knowledge-note.md)。
 
 内容状态、来源和复核方式见[内容维护与可信度](docs/maintenance.md)。

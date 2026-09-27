@@ -69,17 +69,10 @@
     </footer>
   </main>
 
-  <script>
-    const poems = [
-      { title:'静夜思', author:'李白', text:'床前明月光，疑是地上霜。\n举头望明月，低头思故乡。', prompt:'举头望明月，', answer:'低头思故乡。', note:'“举头”与“低头”形成动作对照，月光引出思乡。' },
-      { title:'春晓', author:'孟浩然', text:'春眠不觉晓，处处闻啼鸟。\n夜来风雨声，花落知多少。', prompt:'夜来风雨声，', answer:'花落知多少。', note:'由清晨鸟鸣想到夜里风雨，结尾用问句留下对春光的怜惜。' },
-      { title:'登鹳雀楼', author:'王之涣', text:'白日依山尽，黄河入海流。\n欲穷千里目，更上一层楼。', prompt:'欲穷千里目，', answer:'更上一层楼。', note:'景物的辽阔与登高动作连在一起，说明视野来自不断向上。' },
-      { title:'望庐山瀑布', author:'李白', text:'日照香炉生紫烟，遥看瀑布挂前川。\n飞流直下三千尺，疑是银河落九天。', prompt:'飞流直下三千尺，', answer:'疑是银河落九天。', note:'“飞流”“直下”写动态，“银河落九天”用夸张与比喻写瀑布的壮阔。' },
-      { title:'江雪', author:'柳宗元', text:'千山鸟飞绝，万径人踪灭。\n孤舟蓑笠翁，独钓寒江雪。', prompt:'孤舟蓑笠翁，', answer:'独钓寒江雪。', note:'“千、万、孤、独”把广阔环境与人物孤身相互映照。' },
-      { title:'使至塞上', author:'王维', text:'单车欲问边，属国过居延。\n征蓬出汉塞，归雁入胡天。\n大漠孤烟直，长河落日圆。\n萧关逢候骑，都护在燕然。', prompt:'大漠孤烟直，', answer:'长河落日圆。', note:'“直”与“圆”使荒漠画面开阔、稳定；赏析应先说画面，再谈雄浑。' },
-      { title:'天净沙·秋思', author:'马致远', text:'枯藤老树昏鸦，小桥流水人家，古道西风瘦马。\n夕阳西下，断肠人在天涯。', prompt:'夕阳西下，', answer:'断肠人在天涯。', note:'前面密集列景，最后点出“断肠人”，把旅途的萧瑟与漂泊感集中起来。' },
-      { title:'观沧海', author:'曹操', text:'东临碣石，以观沧海。\n水何澹澹，山岛竦峙。\n树木丛生，百草丰茂。\n秋风萧瑟，洪波涌起。\n日月之行，若出其中；星汉灿烂，若出其里。\n幸甚至哉，歌以咏志。', prompt:'日月之行，若出其中；', answer:'星汉灿烂，若出其里。', note:'用想象扩大海的容纳尺度，景象雄阔，也体现诗人的胸襟与志向。' }
-    ];
+  <script type="module">
+    const response = await fetch('./data/poems.json');
+    if (!response.ok) throw new Error(`无法加载题库：${response.status}`);
+    const poems = await response.json();
 
     const key = 'education-hub:chinese:classical-poetry:progress';
     const saved = JSON.parse(localStorage.getItem(key) || '{}');
