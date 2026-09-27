@@ -50,7 +50,7 @@
   </main>
   <script type="module">
     const data = await fetch('./data/basic-850-reviewed.json').then(response => { if (!response.ok) throw new Error('无法加载 Basic 850 题库'); return response.json(); });
-    const labels = {operations:'操作词', things_general:'一般事物', things_picturable:'可指认事物', qualities_general:'一般性质', qualities_opposites:'反义性质'};
+    const labels = {operations:'操作词', general_things:'一般事物', picturable_things:'可指认事物', qualities_general:'一般性质', qualities_opposites:'反义性质'};
     const categories = [...new Set(data.words.map(word => word.category))];
     const allWords = data.words;
     const key = 'education-hub:english:basic-850:results';
