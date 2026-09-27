@@ -20,6 +20,7 @@
   - [英语时态](docs/language/english/tenses.md)
   - [英语练习与解析](docs/language/english/practice.md)
   - [English Practice · 互动练习](docs/language/english/practice-lab.md)
+  - [Ogden Basic English 850](docs/language/english/basic-english-850.md)
 - **📐 Mathematics 数学**
   - [数学知识地图](docs/mathematics/README.md)
   - [数学全学段地图](docs/mathematics/curriculum.md)

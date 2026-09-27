@@ -30,7 +30,7 @@
   .subtitle { text-align: center; opacity: 0.9; margin-bottom: 40px; font-size: 16px; }
   .cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin-bottom: 30px;
   }
@@ -70,7 +70,10 @@
   }
   .tips strong { color: #ffd54f; }
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
     .cards { grid-template-columns: 1fr; }
     h1 { font-size: 28px; }
   }
@@ -102,6 +105,13 @@
       <h2>造句练习 60 句</h2>
       <p>12 语法点 × 5 句型 + 录音 + 自检</p>
       <div class="badge">🔥 输出（关键）</div>
+    </a>
+
+    <a class="card" href="basic-850.html">
+      <div class="icon">🧭</div>
+      <h2>Basic English 850</h2>
+      <p>Ogden 经典词表 · 基础表达自测</p>
+      <div class="badge">认识 · 能用 · 随机抽测</div>
     </a>
   </div>
   
