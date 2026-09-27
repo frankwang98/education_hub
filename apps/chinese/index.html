@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古诗词复习 · Education Hub</title>
+  <style>
+    :root { --ink:#1f2937; --muted:#64748b; --paper:#fffdf8; --line:#e7e1d5; --accent:#9b3d24; --accent-soft:#fff1eb; --good:#16794a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; background:#f6f3ed; color:var(--ink); line-height:1.7; }
+    .wrap { width:min(880px,calc(100% - 32px)); margin:0 auto; padding:28px 0 56px; }
+    .back { color:var(--accent); text-decoration:none; font-size:14px; }
+    .back:hover { text-decoration:underline; }
+    header { margin:32px 0 24px; }
+    .eyebrow { color:var(--accent); font-size:12px; font-weight:700; letter-spacing:.12em; }
+    h1 { font-size:clamp(30px,6vw,44px); margin:8px 0; line-height:1.2; }
+    .lead { color:var(--muted); margin:0; max-width:620px; }
+    .notice { margin:24px 0; padding:14px 16px; border:1px solid #f0cfbf; background:var(--accent-soft); border-radius:12px; font-size:14px; }
+    .toolbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:24px 0; padding:14px 16px; background:#fff; border:1px solid var(--line); border-radius:14px; }
+    .progress { font-size:14px; color:var(--muted); }
+    .progress strong { color:var(--accent); }
+    button { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:8px; padding:8px 12px; cursor:pointer; font:inherit; font-size:14px; }
+    button:hover { border-color:var(--accent); color:var(--accent); }
+    .cards { display:grid; gap:16px; }
+    .card { background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:22px; box-shadow:0 4px 18px rgba(63,45,24,.04); }
+    .card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    h2 { font-size:21px; margin:0; }
+    .author { color:var(--muted); font-size:14px; }
+    .status { font-size:12px; border-radius:999px; padding:3px 9px; background:#f1eee8; color:var(--muted); white-space:nowrap; }
+    .status.done { background:#e7f6ed; color:var(--good); }
+    .text { margin:18px 0 16px; padding-left:14px; border-left:3px solid #d6b49f; color:#374151; white-space:pre-line; }
+    .question { background:#fff; border:1px dashed #d9c5b7; padding:14px; border-radius:10px; }
+    label { display:block; font-size:14px; color:var(--muted); margin-bottom:7px; }
+    input { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; background:#fff; }
+    input:focus { outline:2px solid #f4d4c7; border-color:var(--accent); }
+    .actions { display:flex; align-items:center; gap:10px; margin-top:10px; }
+    .check { background:var(--accent); border-color:var(--accent); color:#fff; }
+    .check:hover { color:#fff; filter:brightness(.95); }
+    .feedback { min-height:24px; font-size:14px; margin:8px 0 0; }
+    .feedback.good { color:var(--good); } .feedback.bad { color:#b42318; }
+    details { margin-top:15px; color:var(--muted); font-size:14px; }
+    summary { cursor:pointer; color:var(--accent); }
+    footer { color:var(--muted); font-size:13px; margin-top:30px; }
+    footer a { color:var(--accent); }
+    @media (max-width:600px) { .wrap { width:min(100% - 24px,880px); padding-top:20px; } .toolbar { align-items:flex-start; flex-direction:column; } .card { padding:18px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="back" href="../../#/docs/language/chinese/practice-lab">← 返回 Education Hub · 语文学习</a>
+    <header>
+      <div class="eyebrow">CHINESE PRACTICE · FIRST COLLECTION</div>
+      <h1>古诗词复习与默写</h1>
+      <p class="lead">先读完整诗句，再根据提示默写关键句；答对后再看画面、关键词和情感。默写不是孤立填字，而是回到整首诗。</p>
+    </header>
+
+    <div class="notice">当前为首批 8 篇练习，覆盖小学至初高中常见篇目。课程标准完整目录仍在持续建设中；只有已录入文本、讲解和练习的篇目才会进入这里。</div>
+
+    <section class="toolbar" aria-label="学习进度">
+      <div class="progress">本浏览器已掌握：<strong id="count">0 / 8</strong></div>
+      <button id="reset" type="button">清空本页进度</button>
+    </section>
+
+    <section id="cards" class="cards" aria-label="古诗词默写练习"></section>
+
+    <footer>
+      想先理解再练习？阅读 <a href="../../#/docs/language/chinese/classical-poetry">古诗词阅读方法</a>，或进入 <a href="../../#/docs/language/chinese/classics/jingyesi">《静夜思》精讲</a>。
+      学习状态仅保存在当前浏览器，不会上传。
+    </footer>
+  </main>
+
+  <script>
+    const poems = [
+      { title:'静夜思', author:'李白', text:'床前明月光，疑是地上霜。\n举头望明月，低头思故乡。', prompt:'举头望明月，', answer:'低头思故乡。', note:'“举头”与“低头”形成动作对照，月光引出思乡。' },
+      { title:'春晓', author:'孟浩然', text:'春眠不觉晓，处处闻啼鸟。\n夜来风雨声，花落知多少。', prompt:'夜来风雨声，', answer:'花落知多少。', note:'由清晨鸟鸣想到夜里风雨，结尾用问句留下对春光的怜惜。' },
+      { title:'登鹳雀楼', author:'王之涣', text:'白日依山尽，黄河入海流。\n欲穷千里目，更上一层楼。', prompt:'欲穷千里目，', answer:'更上一层楼。', note:'景物的辽阔与登高动作连在一起，说明视野来自不断向上。' },
+      { title:'望庐山瀑布', author:'李白', text:'日照香炉生紫烟，遥看瀑布挂前川。\n飞流直下三千尺，疑是银河落九天。', prompt:'飞流直下三千尺，', answer:'疑是银河落九天。', note:'“飞流”“直下”写动态，“银河落九天”用夸张与比喻写瀑布的壮阔。' },
+      { title:'江雪', author:'柳宗元', text:'千山鸟飞绝，万径人踪灭。\n孤舟蓑笠翁，独钓寒江雪。', prompt:'孤舟蓑笠翁，', answer:'独钓寒江雪。', note:'“千、万、孤、独”把广阔环境与人物孤身相互映照。' },
+      { title:'使至塞上', author:'王维', text:'单车欲问边，属国过居延。\n征蓬出汉塞，归雁入胡天。\n大漠孤烟直，长河落日圆。\n萧关逢候骑，都护在燕然。', prompt:'大漠孤烟直，', answer:'长河落日圆。', note:'“直”与“圆”使荒漠画面开阔、稳定；赏析应先说画面，再谈雄浑。' },
+      { title:'天净沙·秋思', author:'马致远', text:'枯藤老树昏鸦，小桥流水人家，古道西风瘦马。\n夕阳西下，断肠人在天涯。', prompt:'夕阳西下，', answer:'断肠人在天涯。', note:'前面密集列景，最后点出“断肠人”，把旅途的萧瑟与漂泊感集中起来。' },
+      { title:'观沧海', author:'曹操', text:'东临碣石，以观沧海。\n水何澹澹，山岛竦峙。\n树木丛生，百草丰茂。\n秋风萧瑟，洪波涌起。\n日月之行，若出其中；星汉灿烂，若出其里。\n幸甚至哉，歌以咏志。', prompt:'日月之行，若出其中；', answer:'星汉灿烂，若出其里。', note:'用想象扩大海的容纳尺度，景象雄阔，也体现诗人的胸襟与志向。' }
+    ];
+
+    const key = 'education-hub:chinese:classical-poetry:progress';
+    const saved = JSON.parse(localStorage.getItem(key) || '{}');
+    const normalize = value => value.replace(/[，。；、\s]/g, '');
+    const cards = document.getElementById('cards');
+
+    cards.innerHTML = poems.map((poem, index) => `
+      <article class="card" data-index="${index}">
+        <div class="card-head"><div><h2>${index + 1}. 《${poem.title}》</h2><div class="author">${poem.author}</div></div><span class="status">待复习</span></div>
+        <div class="text">${poem.text}</div>
+        <div class="question">
+          <label for="answer-${index}">默写：${poem.prompt}</label>
+          <input id="answer-${index}" autocomplete="off" placeholder="输入下一句" value="${saved[index]?.input || ''}">
+          <div class="actions"><button class="check" type="button">检查答案</button><button class="show" type="button">显示答案</button></div>
+          <div class="feedback" aria-live="polite"></div>
+        </div>
+        <details><summary>理解提示</summary><p>${poem.note}</p></details>
+      </article>`).join('');
+
+    function renderProgress() {
+      let done = 0;
+      document.querySelectorAll('.card').forEach((card, index) => {
+        const status = card.querySelector('.status');
+        if (saved[index]?.done) { done++; status.textContent = '已掌握'; status.classList.add('done'); }
+        else { status.textContent = '待复习'; status.classList.remove('done'); }
+      });
+      document.getElementById('count').textContent = `${done} / ${poems.length}`;
+    }
+
+    document.querySelectorAll('.card').forEach((card, index) => {
+      const input = card.querySelector('input');
+      const feedback = card.querySelector('.feedback');
+      const saveInput = () => { saved[index] = { ...(saved[index] || {}), input: input.value }; localStorage.setItem(key, JSON.stringify(saved)); };
+      input.addEventListener('input', saveInput);
+      card.querySelector('.check').addEventListener('click', () => {
+        const correct = normalize(input.value) === normalize(poems[index].answer);
+        saved[index] = { input: input.value, done: correct };
+        localStorage.setItem(key, JSON.stringify(saved));
+        feedback.textContent = correct ? '答对了。再朗读一遍整首诗，确认它能连起来。' : '还不完全正确。可以看答案后遮住再试一次。';
+        feedback.className = `feedback ${correct ? 'good' : 'bad'}`;
+        renderProgress();
+      });
+      card.querySelector('.show').addEventListener('click', () => {
+        feedback.textContent = `答案：${poems[index].answer}`;
+        feedback.className = 'feedback';
+      });
+    });
+
+    document.getElementById('reset').addEventListener('click', () => {
+      if (!confirm('确定清空本页的默写输入和掌握状态吗？')) return;
+      localStorage.removeItem(key);
+      location.reload();
+    });
+    renderProgress();
+  </script>
+</body>
+</html>

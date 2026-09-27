@@ -13,6 +13,7 @@
 
 - [《静夜思》：由月光到思乡](jingyesi.md)
 - [古诗词阅读：从画面走向情感与表达](../classical-poetry.md)
+- [古诗词复习与默写](../practice-lab.md)
 
 ## 每篇的固定结构
 

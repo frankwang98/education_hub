@@ -6,6 +6,8 @@
 
 从[语文学习路径](roadmap.md)开始。
 
+- [Chinese Practice：古诗词复习与默写](practice-lab.md)
+
 - [现代文阅读：从信息到观点](reading-argument.md)
 - [古诗词阅读：从画面走向情感与表达](classical-poetry.md)
 - [古诗文篇目、精讲与背诵](classics/README.md)

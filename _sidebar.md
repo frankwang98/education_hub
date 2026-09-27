@@ -12,6 +12,7 @@
     - [课程标准篇目目录](docs/language/chinese/classics/curriculum-catalog.md)
     - [《静夜思》精讲](docs/language/chinese/classics/jingyesi.md)
   - [语文练习与解析](docs/language/chinese/practice.md)
+  - [Chinese Practice · 互动练习](docs/language/chinese/practice-lab.md)
   - [English 英语](docs/language/english/README.md)
   - [英语全学段地图](docs/language/english/curriculum.md)
   - [英语学习路径](docs/language/english/roadmap.md)
