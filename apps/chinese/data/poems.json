@@ -140,5 +140,61 @@
       "竦峙",
       "星汉"
     ]
+  },
+  {
+    "title": "咏鹅",
+    "author": "骆宾王",
+    "text": "鹅，鹅，鹅，曲项向天歌。\n白毛浮绿水，红掌拨清波。",
+    "prompt": "白毛浮绿水，",
+    "answer": "红掌拨清波。",
+    "note": "从声音、毛色、脚掌到水波，颜色与动作共同构成鲜明画面。",
+    "id": "yonge",
+    "level": "小学",
+    "genre": "唐诗",
+    "reversePrompt": "红掌拨清波。",
+    "reverseAnswer": "白毛浮绿水，",
+    "commonMistakes": ["曲项", "浮", "拨"]
+  },
+  {
+    "title": "咏柳",
+    "author": "贺知章",
+    "text": "碧玉妆成一树高，万条垂下绿丝绦。\n不知细叶谁裁出，二月春风似剪刀。",
+    "prompt": "不知细叶谁裁出，",
+    "answer": "二月春风似剪刀。",
+    "note": "把柳叶和春风分别比作丝绦与剪刀，写出早春柳树的精巧与生机。",
+    "id": "yongliu",
+    "level": "小学",
+    "genre": "唐诗",
+    "reversePrompt": "二月春风似剪刀。",
+    "reverseAnswer": "不知细叶谁裁出，",
+    "commonMistakes": ["妆", "丝绦", "裁"]
+  },
+  {
+    "title": "回乡偶书",
+    "author": "贺知章",
+    "text": "少小离家老大回，乡音无改鬓毛衰。\n儿童相见不相识，笑问客从何处来。",
+    "prompt": "儿童相见不相识，",
+    "answer": "笑问客从何处来。",
+    "note": "以儿童的天真发问反衬诗人久别还乡后的陌生感，情感含蓄而复杂。",
+    "id": "huixiangoushu",
+    "level": "小学",
+    "genre": "唐诗",
+    "reversePrompt": "笑问客从何处来。",
+    "reverseAnswer": "儿童相见不相识，",
+    "commonMistakes": ["鬓", "衰", "识"]
+  },
+  {
+    "title": "赠汪伦",
+    "author": "李白",
+    "text": "李白乘舟将欲行，忽闻岸上踏歌声。\n桃花潭水深千尺，不及汪伦送我情。",
+    "prompt": "桃花潭水深千尺，",
+    "answer": "不及汪伦送我情。",
+    "note": "用潭水之深衬托友情之深，是夸张与比较共同形成的真挚表达。",
+    "id": "zengwanglun",
+    "level": "小学",
+    "genre": "唐诗",
+    "reversePrompt": "不及汪伦送我情。",
+    "reverseAnswer": "桃花潭水深千尺，",
+    "commonMistakes": ["潭", "及", "汪"]
   }
 ]
