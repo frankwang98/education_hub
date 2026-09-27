@@ -38,6 +38,8 @@
     .check:hover { color:#fff; filter:brightness(.95); }
     .feedback { min-height:24px; font-size:14px; margin:8px 0 0; }
     .feedback.good { color:var(--good); } .feedback.bad { color:#b42318; }
+    .random-card { display:none; margin:0 0 16px; padding:20px; border:1px solid #d6b49f; border-radius:16px; background:#fff8f3; } .random-card.show { display:block; }
+    .meta { color:var(--muted); font-size:13px; margin:5px 0 12px; }
     details { margin-top:15px; color:var(--muted); font-size:14px; }
     summary { cursor:pointer; color:var(--accent); }
     footer { color:var(--muted); font-size:13px; margin-top:30px; }
@@ -58,9 +60,10 @@
 
     <section class="toolbar" aria-label="学习进度">
       <div class="progress">本浏览器已掌握：<strong id="count">0 / 8</strong></div>
-      <button id="reset" type="button">清空本页进度</button>
+      <div class="actions"><button id="random-test" type="button">随机抽背</button><button id="reset" type="button">清空本页进度</button></div>
     </section>
 
+    <section id="random-card" class="random-card" aria-live="polite"></section>
     <section id="cards" class="cards" aria-label="古诗词默写练习"></section>
 
     <footer>
@@ -81,7 +84,7 @@
 
     cards.innerHTML = poems.map((poem, index) => `
       <article class="card" data-index="${index}">
-        <div class="card-head"><div><h2>${index + 1}. 《${poem.title}》</h2><div class="author">${poem.author}</div></div><span class="status">待复习</span></div>
+        <div class="card-head"><div><h2>${index + 1}. 《${poem.title}》</h2><div class="author">${poem.author} · ${poem.level} · ${poem.genre}</div></div><span class="status">待复习</span></div>
         <div class="text">${poem.text}</div>
         <div class="question">
           <label for="answer-${index}">默写：${poem.prompt}</label>
@@ -89,7 +92,7 @@
           <div class="actions"><button class="check" type="button">检查答案</button><button class="show" type="button">显示答案</button></div>
           <div class="feedback" aria-live="polite"></div>
         </div>
-        <details><summary>理解提示</summary><p>${poem.note}</p></details>
+        <details><summary>理解与易错字</summary><p>${poem.note}</p><p>易错字：${poem.commonMistakes.join('、')}</p></details>
       </article>`).join('');
 
     function renderProgress() {
@@ -125,6 +128,20 @@
       if (!confirm('确定清空本页的默写输入和掌握状态吗？')) return;
       localStorage.removeItem(key);
       location.reload();
+    });
+    document.getElementById('random-test').addEventListener('click', () => {
+      const index = Math.floor(Math.random() * poems.length);
+      const poem = poems[index];
+      const reverse = Math.random() < .5;
+      const prompt = reverse ? poem.reversePrompt : poem.prompt;
+      const answer = reverse ? poem.reverseAnswer : poem.answer;
+      const panel = document.getElementById('random-card');
+      panel.classList.add('show');
+      panel.innerHTML = `<strong>随机抽背 · 《${poem.title}》</strong><div class="meta">${poem.author} · ${poem.level} · ${poem.genre}</div><div class="question"><label>默写：${prompt}</label><input autocomplete="off" placeholder="输入对应诗句"><div class="actions"><button class="check" type="button">检查答案</button><button class="show" type="button">显示答案</button></div><div class="feedback"></div></div>`;
+      const input = panel.querySelector('input'); const feedback = panel.querySelector('.feedback');
+      panel.querySelector('.check').onclick = () => { const correct = normalize(input.value) === normalize(answer); saved[index] = {...(saved[index] || {}), done: correct || saved[index]?.done}; localStorage.setItem(key, JSON.stringify(saved)); feedback.textContent = correct ? '答对了。下一次可以再试反向默写。' : '还不完全正确。注意易错字：' + poem.commonMistakes.join('、'); feedback.className = `feedback ${correct ? 'good' : 'bad'}`; renderProgress(); };
+      panel.querySelector('.show').onclick = () => { feedback.textContent = `答案：${answer}`; feedback.className='feedback'; };
+      panel.scrollIntoView({behavior:'smooth', block:'start'});
     });
     renderProgress();
   </script>
