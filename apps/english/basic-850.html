@@ -22,6 +22,7 @@
     .groups { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }
     .quiz { display:none; padding:16px; border:1px solid #b7daca; border-radius:14px; background:#f5fcf7; margin-bottom:16px; } .quiz.show { display:block; }
     .quiz-word { font-size:28px; font-weight:700; margin:8px 0; } .quiz-actions { display:flex; flex-wrap:wrap; gap:8px; }
+    .feedback { min-height:24px; margin:10px 0 0; font-size:14px; } .feedback.good { color:var(--use); } .feedback.bad { color:#b42318; }
     .word-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(132px,1fr)); gap:9px; }
     .word { min-height:42px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:left; position:relative; } .word::after { content:""; position:absolute; right:8px; top:50%; width:8px; height:8px; border-radius:50%; transform:translateY(-50%); background:#cbd5d0; }
     .word.recognize { border-color:#e2bf78; background:#fff9eb; } .word.recognize::after { background:var(--know); } .word.use { border-color:#96d1af; background:var(--accent-soft); } .word.use::after { background:var(--use); }
@@ -38,34 +39,38 @@
       <p class="lead">一份有纪念意义的英语最小表达骨架。它不是现代高频词排行榜，而是 C. K. Ogden 为基础交流设计的受控词表；用它检查“我认识什么”和“我能拿来表达什么”。</p>
     </header>
 
-    <div class="notice"><strong>使用方式：</strong>点击词语循环标记 <em>未测 → 认识 → 能用</em>。只有能不依赖翻译、在自己的句子中用出来，才标为“能用”。</div>
-    <section class="stats"><div class="stat"><strong id="total">0 / 850</strong><span>已完成自测</span></div><div class="stat"><strong id="recognize">0</strong><span>认识</span></div><div class="stat"><strong id="use">0</strong><span>能用</span></div></section>
+    <div class="notice"><strong>使用方式：</strong>随机抽测会在“英文选释义”和“中文拼写英文”之间切换。只有答对才计入进度；词卡颜色表示答对记录，而不是自我声明。</div>
+    <section class="stats"><div class="stat"><strong id="total">0 / 850</strong><span>至少答对一次</span></div><div class="stat"><strong id="recognize">0%</strong><span>总正确率</span></div><div class="stat"><strong id="use">0</strong><span>累计答对</span></div></section>
     <section class="controls"><input id="search" type="search" placeholder="搜索词语，例如: water"><button id="random" type="button">随机抽测</button><button id="clear" class="danger" type="button">清空进度</button></section>
     <div id="groups" class="groups" aria-label="原始分类"></div>
-    <section id="quiz" class="quiz" aria-live="polite"><div>请不查词典，试着解释或用它造一个句子：</div><div id="quiz-word" class="quiz-word"></div><div class="quiz-actions"><button data-status="1" type="button">我认识</button><button data-status="2" type="button">我能用它造句</button><button data-status="0" type="button">暂时不会</button></div></section>
-    <div class="legend"><span class="dot unseen"></span>未测 <span class="dot recognize-dot"></span>认识 <span class="dot use-dot"></span>能用。词表保留 Ogden 的五类原始分组和替代拼写。</div>
+    <section id="quiz" class="quiz" aria-live="polite"><div id="quiz-prompt"></div><div id="quiz-word" class="quiz-word"></div><div id="quiz-actions" class="quiz-actions"></div><div id="quiz-feedback" class="feedback"></div></section>
+    <div class="legend"><span class="dot unseen"></span>未答对 <span class="dot use-dot"></span>至少答对一次。词表保留 Ogden 的五类原始分组和替代拼写。</div>
     <section id="words" class="word-grid" aria-label="Basic English 850 words"></section>
     <footer>词表来源：<a id="source" target="_blank" rel="noopener">Ogden’s Basic English Word List</a>（1930；本地数据最后核对：2026-09-27）。学习状态仅保存在当前浏览器。</footer>
   </main>
   <script type="module">
-    const data = await fetch('./data/basic-850.json').then(response => { if (!response.ok) throw new Error('无法加载 Basic 850 词表'); return response.json(); });
-    const allWords = data.groups.flatMap((group, groupIndex) => group.words.map(word => ({word, groupIndex})));
-    const key = 'education-hub:english:basic-850:status';
-    const saved = JSON.parse(localStorage.getItem(key) || '{}');
+    const data = await fetch('./data/basic-850-reviewed.json').then(response => { if (!response.ok) throw new Error('无法加载 Basic 850 题库'); return response.json(); });
+    const labels = {operations:'操作词', things_general:'一般事物', things_picturable:'可指认事物', qualities_general:'一般性质', qualities_opposites:'反义性质'};
+    const categories = [...new Set(data.words.map(word => word.category))];
+    const allWords = data.words;
+    const key = 'education-hub:english:basic-850:results';
+    const stored = JSON.parse(localStorage.getItem(key) || '{}');
+    const saved = stored.words ? stored : {attempts:0, correct:0, words:{}};
     let activeGroup = -1; let activeQuiz = null;
     const groups = document.getElementById('groups'); const words = document.getElementById('words'); const search = document.getElementById('search');
     document.getElementById('source').href = data.source.url;
     const save = () => localStorage.setItem(key, JSON.stringify(saved));
-    const statusFor = word => saved[word] || 0;
-    const setStatus = (word, status) => { if (status) saved[word] = status; else delete saved[word]; save(); render(); };
-    function renderStats() { const states=Object.values(saved); document.getElementById('total').textContent=`${states.length} / ${allWords.length}`; document.getElementById('recognize').textContent=states.filter(value=>value===1).length; document.getElementById('use').textContent=states.filter(value=>value===2).length; }
-    function renderGroups() { groups.innerHTML=''; const all=document.createElement('button'); all.textContent='全部 850'; all.className=activeGroup===-1?'active':''; all.onclick=()=>{activeGroup=-1;render();}; groups.append(all); data.groups.forEach((group,index)=>{const button=document.createElement('button'); button.textContent=`${group.name} · ${group.words.length}`; button.className=activeGroup===index?'active':''; button.onclick=()=>{activeGroup=index;render();}; groups.append(button);}); }
-    function renderWords() { const query=search.value.trim().toLowerCase(); words.innerHTML=''; allWords.filter(item => (activeGroup===-1 || item.groupIndex===activeGroup) && item.word.toLowerCase().includes(query)).forEach(item => { const button=document.createElement('button'); const status=statusFor(item.word); button.textContent=item.word; button.title='点击切换：未测 → 认识 → 能用'; button.className=`word ${status===1?'recognize':status===2?'use':''}`; button.onclick=()=>setStatus(item.word,(status+1)%3); words.append(button); }); }
-    function renderQuiz() { const quiz=document.getElementById('quiz'); if (!activeQuiz) { quiz.classList.remove('show'); return; } quiz.classList.add('show'); document.getElementById('quiz-word').textContent=activeQuiz.word; quiz.querySelectorAll('[data-status]').forEach(button=>button.onclick=()=>{setStatus(activeQuiz.word,Number(button.dataset.status)); activeQuiz=null; renderQuiz();}); }
-    function render() { renderStats(); renderGroups(); renderWords(); renderQuiz(); }
+    const statusFor = word => saved.words[word.headword]?.correct || 0;
+    function renderStats() { const solved=Object.values(saved.words).filter(result=>result.correct).length; document.getElementById('total').textContent=`${solved} / ${allWords.length}`; document.getElementById('recognize').textContent=saved.attempts ? `${Math.round(saved.correct / saved.attempts * 100)}%` : '0%'; document.getElementById('use').textContent=saved.correct; }
+    function renderGroups() { groups.innerHTML=''; const all=document.createElement('button'); all.textContent='全部 850'; all.className=activeGroup===-1?'active':''; all.onclick=()=>{activeGroup=-1;render();}; groups.append(all); categories.forEach((category,index)=>{const button=document.createElement('button'); const count=allWords.filter(word=>word.category===category).length; button.textContent=`${labels[category]} · ${count}`; button.className=activeGroup===index?'active':''; button.onclick=()=>{activeGroup=index;render();}; groups.append(button);}); }
+    function renderWords() { const query=search.value.trim().toLowerCase(); words.innerHTML=''; allWords.filter(item => (activeGroup===-1 || item.category===categories[activeGroup]) && item.headword.toLowerCase().includes(query)).forEach(item => { const button=document.createElement('button'); button.textContent=item.headword; button.title='点击以此词开始测验'; button.className=`word ${statusFor(item)?'use':''}`; button.onclick=()=>startQuiz(item); words.append(button); }); }
+    function record(word, correct) { saved.attempts++; if (correct) saved.correct++; saved.words[word.headword]={correct:(saved.words[word.headword]?.correct||0)+(correct?1:0)}; save(); renderStats(); renderWords(); }
+    const choose = list => list[Math.floor(Math.random()*list.length)];
+    function startQuiz(word) { activeQuiz=word; const quiz=document.getElementById('quiz'); const prompt=document.getElementById('quiz-prompt'); const target=document.getElementById('quiz-word'); const actions=document.getElementById('quiz-actions'); const feedback=document.getElementById('quiz-feedback'); quiz.classList.add('show'); actions.innerHTML=''; feedback.textContent=''; const spelling=Math.random()<.5; if(spelling){prompt.textContent='根据中文释义，拼写对应的英文词：'; target.textContent=word.gloss_zh_tw; const input=document.createElement('input'); input.placeholder='输入英文单词'; const button=document.createElement('button'); button.textContent='检查拼写'; button.className='check'; button.onclick=()=>{const ok=input.value.trim().toLowerCase()===word.headword.toLowerCase(); record(word,ok); feedback.textContent=ok?'正确。':'答案：'+word.headword; feedback.className=`feedback ${ok?'good':'bad'}`;}; actions.append(input,button);}else{prompt.textContent='选择该英文词的正确中文释义：'; target.textContent=word.headword; const options=[word,...allWords.filter(item=>item.headword!==word.headword).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5); options.forEach(option=>{const button=document.createElement('button'); button.textContent=option.gloss_zh_tw; button.onclick=()=>{const ok=option.headword===word.headword; record(word,ok); feedback.textContent=ok?'正确。 '+word.example_en:'正确答案：'+word.gloss_zh_tw; feedback.className=`feedback ${ok?'good':'bad'}`; [...actions.children].forEach(item=>item.disabled=true);}; actions.append(button);});} }
+    function render() { renderStats(); renderGroups(); renderWords(); }
     search.addEventListener('input',renderWords);
-    document.getElementById('random').onclick=()=>{const pool=allWords.filter(item=>activeGroup===-1 || item.groupIndex===activeGroup); activeQuiz=pool[Math.floor(Math.random()*pool.length)]; renderQuiz();};
-    document.getElementById('clear').onclick=()=>{if(confirm('确定清空 Basic 850 的全部自测状态吗？')){localStorage.removeItem(key); Object.keys(saved).forEach(word=>delete saved[word]); render();}};
+    document.getElementById('random').onclick=()=>{const pool=allWords.filter(item=>activeGroup===-1 || item.category===categories[activeGroup]); startQuiz(choose(pool));};
+    document.getElementById('clear').onclick=()=>{if(confirm('确定清空 Basic 850 的全部测验记录吗？')){localStorage.removeItem(key); saved.attempts=0;saved.correct=0;saved.words={};render();}};
     render();
   </script>
 </body>

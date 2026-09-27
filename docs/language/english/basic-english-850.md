@@ -12,13 +12,12 @@ C. K. Ogden 在 1930 年提出 Basic English：用 850 个核心词和一组简�
 
 ## 如何自测
 
-对每个词使用三个状态：
+自测会随机使用两种可判定题型：
 
-1. **未测**：还没认真判断。
-2. **认识**：看到后能大致理解。
-3. **能用**：不依赖翻译，也能在自己的句子中自然使用。
+1. **英文选释义**：从四个中文释义中选择正确答案。
+2. **中文拼写英文**：根据中文释义拼写目标词。
 
-随机抽测时，先解释词义或造句，再标记状态。不要为了进度把“见过”直接当作“会用”。
+只有答对才会计入掌握进度；页面同时显示累计正确率。例句和英文定义用于答题后的复盘。自由造句仍适合作为更高一级的人工或 AI 复核，不被伪装成自动判分。
 
 ## 与 Core Vocabulary 2000 的关系
 
@@ -27,7 +26,7 @@ C. K. Ogden 在 1930 年提出 Basic English：用 850 个核心词和一组简�
 ## 来源与版本
 
 - Ogden, C. K. *Basic English: A General Introduction with Rules and Grammar*（1930）。
-- [Ogden’s Basic English Word List](https://static.hlt.bme.hu/semantics/external/pages/Ogden-lista/ogden.basic-english.org/words.html)：本模块按其五个原始分组录入，最后核对：2026-09-27。
+- 释义、英文定义、例句与同义词改编自 [Ogden’s Basic English 850 字繁中學習手冊](https://github.com/yelban/Ogden)（yelban，CC BY-SA 4.0）；本仓库在 `apps/english/data/LICENSE-BASIC-850.md` 保留完整署名与相同许可。
 - [Basic English Organization 的原始课程](https://basicenglish.org/index_htm.html)。
 
 词表中的替代拼写（如 `grey/gray`、`plough/plow`）按来源保留。
