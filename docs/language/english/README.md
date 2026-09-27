@@ -10,3 +10,4 @@
 - [英语时态：先画时间线，再选择形式](tenses.md)
 - [英语全学段核心地图](curriculum.md)
 - [英语诊断练习与参考解析](practice.md)
+- [English Practice：词汇、语法与造句互动练习](practice-lab.md)

@@ -18,6 +18,7 @@
   - [英语句子的主干](docs/language/english/sentence-core.md)
   - [英语时态](docs/language/english/tenses.md)
   - [英语练习与解析](docs/language/english/practice.md)
+  - [English Practice · 互动练习](docs/language/english/practice-lab.md)
 - **📐 Mathematics 数学**
   - [数学知识地图](docs/mathematics/README.md)
   - [数学全学段地图](docs/mathematics/curriculum.md)
