@@ -1,59 +1,59 @@
-- [🏠 首页](/)
-- [🧭 知识地图](/docs/README.md)
-- [🛠️ 内容维护](/docs/maintenance.md)
-- [📍 建设路线](/docs/project-roadmap.md)
+- <a href="/education_hub/#/">🏠 首页</a>
+- <a href="/education_hub/#/docs/">🧭 知识地图</a>
+- <a href="/education_hub/#/docs/maintenance">🛠️ 内容维护</a>
+- <a href="/education_hub/#/docs/project-roadmap">📍 建设路线</a>
 - **🗣️ Language 语言**
-  - [Chinese 语文](/docs/language/chinese/README.md)
-  - [语文全学段地图](/docs/language/chinese/curriculum.md)
-  - [语文学习路径](/docs/language/chinese/roadmap.md)
-  - [现代文阅读：从信息到观点](/docs/language/chinese/reading-argument.md)
-  - [古诗词阅读](/docs/language/chinese/classical-poetry.md)
-  - [古诗文篇目与精讲](/docs/language/chinese/classics/README.md)
-    - [课程标准篇目目录](/docs/language/chinese/classics/curriculum-catalog.md)
-    - [《静夜思》精讲](/docs/language/chinese/classics/jingyesi.md)
-  - [语文练习与解析](/docs/language/chinese/practice.md)
-  - [Chinese Practice · 互动练习](/docs/language/chinese/practice-lab.md)
-  - [English 英语](/docs/language/english/README.md)
-  - [英语全学段地图](/docs/language/english/curriculum.md)
-  - [英语学习路径](/docs/language/english/roadmap.md)
-  - [英语句子的主干](/docs/language/english/sentence-core.md)
-  - [英语时态](/docs/language/english/tenses.md)
-  - [英语练习与解析](/docs/language/english/practice.md)
-  - [English Practice · 互动练习](/docs/language/english/practice-lab.md)
-  - [Ogden Basic English 850](/docs/language/english/basic-english-850.md)
+  - <a href="/education_hub/#/docs/language/chinese/">Chinese 语文</a>
+  - <a href="/education_hub/#/docs/language/chinese/curriculum">语文全学段地图</a>
+  - <a href="/education_hub/#/docs/language/chinese/roadmap">语文学习路径</a>
+  - <a href="/education_hub/#/docs/language/chinese/reading-argument">现代文阅读：从信息到观点</a>
+  - <a href="/education_hub/#/docs/language/chinese/classical-poetry">古诗词阅读</a>
+  - <a href="/education_hub/#/docs/language/chinese/classics/">古诗文篇目与精讲</a>
+    - <a href="/education_hub/#/docs/language/chinese/classics/curriculum-catalog">课程标准篇目目录</a>
+    - <a href="/education_hub/#/docs/language/chinese/classics/jingyesi">《静夜思》精讲</a>
+  - <a href="/education_hub/#/docs/language/chinese/practice">语文练习与解析</a>
+  - <a href="/education_hub/#/docs/language/chinese/practice-lab">Chinese Practice · 互动练习</a>
+  - <a href="/education_hub/#/docs/language/english/">English 英语</a>
+  - <a href="/education_hub/#/docs/language/english/curriculum">英语全学段地图</a>
+  - <a href="/education_hub/#/docs/language/english/roadmap">英语学习路径</a>
+  - <a href="/education_hub/#/docs/language/english/sentence-core">英语句子的主干</a>
+  - <a href="/education_hub/#/docs/language/english/tenses">英语时态</a>
+  - <a href="/education_hub/#/docs/language/english/practice">英语练习与解析</a>
+  - <a href="/education_hub/#/docs/language/english/practice-lab">English Practice · 互动练习</a>
+  - <a href="/education_hub/#/docs/language/english/basic-english-850">Ogden Basic English 850</a>
 - **📐 Mathematics 数学**
-  - [数学知识地图](/docs/mathematics/README.md)
-  - [数学全学段地图](/docs/mathematics/curriculum.md)
-  - [数学学习路径](/docs/mathematics/roadmap.md)
-  - [分数、比例与百分数](/docs/mathematics/fractions-percent.md)
-  - [函数：理解变化的语言](/docs/mathematics/functions.md)
-  - [数学练习与解析](/docs/mathematics/practice.md)
+  - <a href="/education_hub/#/docs/mathematics/">数学知识地图</a>
+  - <a href="/education_hub/#/docs/mathematics/curriculum">数学全学段地图</a>
+  - <a href="/education_hub/#/docs/mathematics/roadmap">数学学习路径</a>
+  - <a href="/education_hub/#/docs/mathematics/fractions-percent">分数、比例与百分数</a>
+  - <a href="/education_hub/#/docs/mathematics/functions">函数：理解变化的语言</a>
+  - <a href="/education_hub/#/docs/mathematics/practice">数学练习与解析</a>
 - **🔬 Science 科学**
-  - [科学知识地图](/docs/science/README.md)
-  - [Physics 物理](/docs/science/physics/README.md)
-  - [Chemistry 化学](/docs/science/chemistry/README.md)
-  - [Biology 生物](/docs/science/biology/README.md)
+  - <a href="/education_hub/#/docs/science/">科学知识地图</a>
+  - <a href="/education_hub/#/docs/science/physics/">Physics 物理</a>
+  - <a href="/education_hub/#/docs/science/chemistry/">Chemistry 化学</a>
+  - <a href="/education_hub/#/docs/science/biology/">Biology 生物</a>
 - **🏛️ Humanities 人文**
-  - [人文知识地图](/docs/humanities/README.md)
-  - [History 历史](/docs/humanities/history/README.md)
-  - [Geography 地理](/docs/humanities/geography/README.md)
-  - [Literature 文学](/docs/humanities/literature/README.md)
-  - [Philosophy 哲学](/docs/humanities/philosophy/README.md)
-  - [中国传统思想与易学](/docs/humanities/philosophy/chinese-tradition/README.md)
-    - [阴阳与五行](/docs/humanities/philosophy/chinese-tradition/yin-yang-wuxing.md)
-    - [天干地支与历法](/docs/humanities/philosophy/chinese-tradition/stems-branches.md)
-    - [周易与八卦](/docs/humanities/philosophy/chinese-tradition/yijing-bagua.md)
-    - [道家思想](/docs/humanities/philosophy/chinese-tradition/daoism.md)
-    - [六亲与十神](/docs/humanities/philosophy/chinese-tradition/liuqin-shishen.md)
+  - <a href="/education_hub/#/docs/humanities/">人文知识地图</a>
+  - <a href="/education_hub/#/docs/humanities/history/">History 历史</a>
+  - <a href="/education_hub/#/docs/humanities/geography/">Geography 地理</a>
+  - <a href="/education_hub/#/docs/humanities/literature/">Literature 文学</a>
+  - <a href="/education_hub/#/docs/humanities/philosophy/">Philosophy 哲学</a>
+  - <a href="/education_hub/#/docs/humanities/philosophy/chinese-tradition/">中国传统思想与易学</a>
+    - <a href="/education_hub/#/docs/humanities/philosophy/chinese-tradition/yin-yang-wuxing">阴阳与五行</a>
+    - <a href="/education_hub/#/docs/humanities/philosophy/chinese-tradition/stems-branches">天干地支与历法</a>
+    - <a href="/education_hub/#/docs/humanities/philosophy/chinese-tradition/yijing-bagua">周易与八卦</a>
+    - <a href="/education_hub/#/docs/humanities/philosophy/chinese-tradition/daoism">道家思想</a>
+    - <a href="/education_hub/#/docs/humanities/philosophy/chinese-tradition/liuqin-shishen">六亲与十神</a>
 - **🌍 General Knowledge 通识**
-  - [通识知识地图](/docs/general/README.md)
-  - [Economics 经济](/docs/general/economics/README.md)
-  - [Law 法律](/docs/general/law/README.md)
-  - [Society 社会](/docs/general/society/README.md)
-  - [Art 艺术](/docs/general/art/README.md)
-  - [Life 生活](/docs/general/life/README.md)
+  - <a href="/education_hub/#/docs/general/">通识知识地图</a>
+  - <a href="/education_hub/#/docs/general/economics/">Economics 经济</a>
+  - <a href="/education_hub/#/docs/general/law/">Law 法律</a>
+  - <a href="/education_hub/#/docs/general/society/">Society 社会</a>
+  - <a href="/education_hub/#/docs/general/art/">Art 艺术</a>
+  - <a href="/education_hub/#/docs/general/life/">Life 生活</a>
 - **🎓 Learning 学习方法**
-  - [学习路径与复习](/docs/learning/README.md)
-  - [成年人基础重建路线](/docs/learning/adult-foundations.md)
-  - [学习、练习与复习](/docs/learning/practice-and-review.md)
-  - [知识条目模板](/docs/templates/knowledge-note.md)
+  - <a href="/education_hub/#/docs/learning/">学习路径与复习</a>
+  - <a href="/education_hub/#/docs/learning/adult-foundations">成年人基础重建路线</a>
+  - <a href="/education_hub/#/docs/learning/practice-and-review">学习、练习与复习</a>
+  - <a href="/education_hub/#/docs/templates/knowledge-note">知识条目模板</a>
