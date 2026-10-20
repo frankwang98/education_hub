@@ -39,6 +39,12 @@
   - [Geography 地理](docs/humanities/geography/README.md)
   - [Literature 文学](docs/humanities/literature/README.md)
   - [Philosophy 哲学](docs/humanities/philosophy/README.md)
+  - [中国传统思想与易学](docs/humanities/philosophy/chinese-tradition/README.md)
+    - [阴阳与五行](docs/humanities/philosophy/chinese-tradition/yin-yang-wuxing.md)
+    - [天干地支与历法](docs/humanities/philosophy/chinese-tradition/stems-branches.md)
+    - [周易与八卦](docs/humanities/philosophy/chinese-tradition/yijing-bagua.md)
+    - [道家思想](docs/humanities/philosophy/chinese-tradition/daoism.md)
+    - [六亲与十神](docs/humanities/philosophy/chinese-tradition/liuqin-shishen.md)
 - **🌍 General Knowledge 通识**
   - [通识知识地图](docs/general/README.md)
   - [Economics 经济](docs/general/economics/README.md)
