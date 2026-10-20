@@ -12,15 +12,16 @@
   <script>
     window.$docsify = {
       name: 'Education Hub',
+      nameLink: '/education_hub/#/',
       repo: 'https://github.com/frankwang98/education_hub',
       loadSidebar: true,
-      // Sidebar links use paths rooted at this Hub. Keeping this false prevents
-      // Docsify from re-resolving `docs/...` relative to a nested page.
-      relativePath: false,
+      // Article links resolve from their containing document.
+      relativePath: true,
       subMaxLevel: 3,
       maxLevel: 4,
       auto2top: true,
       notFoundPage: true,
+      basePath: '/education_hub/',
       search: {
         placeholder: '搜索知识',
         noData: '没有找到结果',
